@@ -29,10 +29,31 @@ namespace HW4.MKlasse
                 Current.Next=ND;
             }            
             
-            
-            
-
             System.Console.WriteLine("Data added");
+        }
+
+        //nulindekseret liste
+        public void DelData(int index){
+            if (index<0)
+            {
+                System.Console.WriteLine("Wrong Index");
+                return;
+            }
+            
+            int ElementCounter=0;
+            ListeElement Current = new ListeElement();
+            ListeElement Previous = new ListeElement();
+            Current=Head;
+            Previous=Current;
+
+            while (ElementCounter<index){
+                Previous=Current;
+                Current=Current.Next;
+                ElementCounter++;
+            }
+
+            Previous.Next=Current.Next;
+            System.Console.WriteLine("Data deleted");
         }
 
         public void PrintListe(){
