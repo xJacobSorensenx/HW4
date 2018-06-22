@@ -11,15 +11,42 @@ namespace HW4.MKlasse
 
         public void AddData(MinData NewData){
             ListeElement ND = new ListeElement();
+            ListeElement Current = new ListeElement();
 
             ND.data=NewData;
-            Head=ND;
+
+            if (Head.data==null)
+            {
+                Head=ND;              
+            }else
+            {
+                Current=Head;
+
+                while(Current.Next!=null){
+                    Current=Current.Next;
+                }
+
+                Current.Next=ND;
+            }            
+            
+            
+            
+
             System.Console.WriteLine("Data added");
         }
 
         public void PrintListe(){
             System.Console.WriteLine("Listen indeholder : ");
-            System.Console.WriteLine($"{Head.data.Id} - {Head.data.Navn}");
+
+            ListeElement Current = new ListeElement();
+
+            Current=Head;
+
+            while(Current!=null){
+                System.Console.WriteLine($"{Current.data.Id} - {Current.data.Navn}");
+                Current=Current.Next;
+            }
+            
         }
 
     }
